@@ -1,3 +1,4 @@
+"use client";
 import { Children, useState, useContext } from "react";
 import InitialContext from "@contexts/initialContext";
 import { useRouter } from "next/navigation";
@@ -117,14 +118,14 @@ const Navbar = () => {
           <SpringButton
             onClick={() => {
               let t =
-                window.localStorage.getItem("theme") === "light"
+              typeof window !== "undefined" && window.localStorage.getItem("theme") === "light"
                   ? "dark"
                   : "light";
-              window.localStorage.setItem("theme", t);
+                  typeof window !== "undefined" && window?.localStorage.setItem("theme", t);
               handleThemeChange(t);
             }}
             className="btn-icon">
-            {window.localStorage.getItem("theme") === "light" ? (
+            {typeof window !== "undefined" && window.localStorage.getItem("theme") === "light" ? (
               <Icon
                 className="text-xs"
                 icon="fa-solid fa-moon"
