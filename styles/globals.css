@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* 外文字体：Lexend */
+@font-face {
+  font-family: 'Lexend';
+  src: url('../public/fonts/Lexend/Lexend-VariableFont_wght.ttf') format('truetype');
+}
+
+/* 中文字体：Noto Sans SC */
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('../public/fonts/NotoSansSC/NotoSansSC-Light.otf') format('truetype');
+  font-weight: 300;
+  font-style: light;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('../public/fonts/NotoSansSC/NotoSansSC-Regular.otf') format('truetype');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Noto Sans SC';
+  src: url('../public/fonts/NotoSansSC/NotoSansSC-Bold.otf') format('truetype');
+  font-weight: 700;
+  font-style: bold;
+}
+
+* {
+  /* 去除Safari移动端点击闪烁问题 */
+  -webkit-tap-highlight-color: transparent;
+}
+
+html,
+body,
+#root {
+  @apply w-full h-full text-slate-800 dark:text-slate-100 dark:bg-slate-900;
+}
+
+input {
+  @apply outline-none;
+}
+
+*::-webkit-scrollbar {
+  @apply w-[0.3rem] h-[0.3rem];
+}
+
+/* 轨道 */
+*::-webkit-scrollbar-track {
+  @apply rounded-2xl my-2;
+}
+
+/* 滑块 */
+*::-webkit-scrollbar-thumb {
+  @apply rounded-2xl bg-slate-100 dark:bg-slate-950;
+}
+
+.scrollbar::-webkit-scrollbar {
+  @apply  !hidden;
+}
+
+/* Carouse */
+.slick-dots {
+  @apply !absolute !bottom-2 !py-2 !px-6 !flex !justify-end !items-center !left-0 !gap-2;
+}
+
+.slick-dots li {
+  @apply  !w-auto !h-auto !m-0;
+}
+
+.slick-dots li button {
+  @apply  !w-2 !h-2 transition-all;
+}
+
+.slick-dots li button:before {
+  @apply  !bg-white !rounded-3xl !w-2 !h-2 !content-[''] !opacity-100 transition-all;
+}
+
+.slick-dots .slick-active button {
+  @apply  !w-6;
+}
+
+.slick-dots .slick-active button:before {
+  @apply  !w-6;
+}
+
+@layer components {
+  .btn {
+    @apply px-6 py-2 rounded-lg md:rounded-xl flex justify-center items-center text-sm ;
+  }
+
+  .btn-primary {
+    @apply px-6 py-2 rounded-lg md:rounded-xl flex justify-center items-center text-sm bg-theme-blue text-white;
+  }
+
+  .btn-icon {
+    @apply w-10 h-10 relative rounded-lg md:rounded-xl grid place-content-center;
+  }
+
+  input[type=range] {
+    @apply absolute top-0 left-0 w-full h-full z-10 appearance-none bg-transparent;
+  }
+
+  input[type=range]::-webkit-slider-thumb {
+    @apply appearance-none w-2 h-full bg-white cursor-pointer shadow-lg shadow-slate-300;
+  }
+
+  input[type=range]::-webkit-slider-runnable-track {
+    @apply h-full;
+  }
+
+  .conpare-slide {
+    @apply absolute top-0 left-0 w-full h-full z-20 appearance-none bg-transparent;
+  }
+
+  .conpare-slide::-webkit-slider-thumb {
+    @apply appearance-none w-2 h-full bg-white cursor-pointer shadow-lg shadow-slate-300;
+  }
+
+  .conpare-slide::-webkit-slider-runnable-track {
+    @apply h-full;
+  }
+
+}
