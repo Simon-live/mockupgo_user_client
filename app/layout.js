@@ -42,14 +42,16 @@ const RootLayout = ({ children }) => {
     getData();
 
     /* Switch theme */
-    const localTheme = window.localStorage.getItem("theme");
-    if (localTheme === "light" || localTheme === "dark") {
-      setTheme(localTheme);
-    } else {
-      if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
-        setTheme("dark");
+    if (typeof window !== "undefined") {
+      const localTheme = window.localStorage.getItem("theme");
+      if (localTheme === "light" || localTheme === "dark") {
+        setTheme(localTheme);
       } else {
-        setTheme("light");
+        if (window.matchMedia("(prefers-color-scheme: dark)").matches) {
+          setTheme("dark");
+        } else {
+          setTheme("light");
+        }
       }
     }
   }, []);
