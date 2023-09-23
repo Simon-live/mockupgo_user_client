@@ -5,6 +5,7 @@ import { useRouter } from "next/navigation";
 import CustomLogo from "@components/logo/customLogo";
 import Icon from "@components/icon";
 import SpringButton from "@components/springButton";
+import config from "@config/default.json";
 
 const Navbar = () => {
   let { data, handleThemeChange } = useContext(InitialContext);
@@ -118,14 +119,17 @@ const Navbar = () => {
           <SpringButton
             onClick={() => {
               let t =
-              typeof window !== "undefined" && window.localStorage.getItem("theme") === "light"
+                typeof window !== "undefined" &&
+                window.localStorage.getItem("theme") === "light"
                   ? "dark"
                   : "light";
-                  typeof window !== "undefined" && window?.localStorage.setItem("theme", t);
+              typeof window !== "undefined" &&
+                window?.localStorage.setItem("theme", t);
               handleThemeChange(t);
             }}
             className="btn-icon">
-            {typeof window !== "undefined" && window.localStorage.getItem("theme") === "light" ? (
+            {typeof window !== "undefined" &&
+            window.localStorage.getItem("theme") === "light" ? (
               <Icon
                 className="text-xs"
                 icon="fa-solid fa-moon"
@@ -139,7 +143,12 @@ const Navbar = () => {
           </SpringButton>
         </section>
         <SpringButton className="hidden md:block btn text-sm text-theme-blue bg-theme-blue/5">
-          SIGN
+          <a
+            href={config.dashboard}
+            target="_blank"
+            rel="noopener noreferrer">
+            Dashboard
+          </a>
         </SpringButton>
       </div>
     </nav>
